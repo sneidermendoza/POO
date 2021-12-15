@@ -16,34 +16,40 @@
 # f. Agregar Café: añade a la cafetera la cantidad de café indicada.
 
 class CoffeeMaker():
-    def __init__(self):
-        self.current_amount = 0
-        self.max_capacity = 1000
+    def __init__(self, amount = 0, max_capacity = 1000):
+        self.amount = amount
+        self.max_capacity = max_capacity
     
-    def get_max_capacity(self):
-        return self.max_capacity
+    # def get_max_capacity(self):
+    #     return self.max_capacity
 
 
-    def get_current_amount(self):
-        return self.current_amount
+    # def get_current_amount(self):
+    #     return self.amount
 
 
     def current_volume(self, current_volume):
-        self.current_amount = current_volume
-        if self.current_amount > self.max_capacity:
-            self.current_amount = self.max_capacity
-        return self.current_amount
+        self.amount = current_volume
+        if self.amount > self.max_capacity:
+            self.amount = self.max_capacity
+        return self.amount
 
     
     def fill_coffeemaker(self):
-        self.current_amount = self.max_capacity
-        return self.current_amount
+        self.amount = self.max_capacity
         
 
+    def serve_coffee(self, capacity):
+        if capacity > self.amount:
+            self.amount = 0
+        else:
+            self.amount -= capacity 
 
+    def empty_coffeemaker(self):
+        self.amount = 0
 
-cafetera = CoffeeMaker()
-print(cafetera.fill_coffeemaker())
+    def add_coffee(self, add_coffee):
+        self.amount += add_coffee
 
 
 
